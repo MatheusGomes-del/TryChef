@@ -6,8 +6,12 @@ import Food from './pages/Food';
 import Drinks from './pages/Drinks';
 import Explore from './pages/Explore';
 import ExploreFood from './pages/ExploreFood';
+import ExploreIngredients from './pages/ExploreIngredients';
+import ExploreNationalities from './pages/ExploreNationalities';
 import ExploreDrinks from './pages/ExploreDrinks';
 import Profile from './pages/Profile';
+import DoneRecipes from './pages/DoneRecipes';
+import FavoriteRecipes from './pages/FavoriteRecipes';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -29,10 +33,20 @@ function App() {
         <Route exact path="/explore" component={ Explore } />
         <Route exact path="/explore/foods" component={ ExploreFood } />
         <Route exact path="/explore/drinks" component={ ExploreDrinks } />
-        <Route exact path="/explore/foods/ingredients" component={ ExploreFood } />
-        <Route exact path="/explore/drinks/ingredients" component={ ExploreDrinks } />
-        <Route exact path="/explore/foods/nationalities" component={ ExploreFood } />
+        <Route exact path="/explore/foods/ingredients" component={ ExploreIngredients } />
+        <Route
+          exact
+          path="/explore/drinks/ingredients"
+          component={ ExploreIngredients }
+        />
+        <Route
+          exact
+          path="/explore/foods/nationalities"
+          component={ ExploreNationalities }
+        />
         <Route exact path="/profile" component={ Profile } />
+        <Route exact path="/done-recipes" component={ DoneRecipes } />
+        <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
       </Switch>
     </>
   );

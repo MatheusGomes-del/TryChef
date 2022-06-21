@@ -5,7 +5,7 @@ import MenuBar from './components/MenuBar';
 export default function ExploreDrinks() {
   return (
     <>
-      <Header />
+      <Header title="Explore Drinks" />
       <div>ExploreDrinks</div>
       <MenuBar />
     </>

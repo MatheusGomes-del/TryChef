@@ -5,7 +5,7 @@ import MenuBar from './components/MenuBar';
 export default function Food() {
   return (
     <>
-      <Header />
+      <Header title="Foods" enableSearchButton />
       <div>Food</div>
       <MenuBar />
     </>
