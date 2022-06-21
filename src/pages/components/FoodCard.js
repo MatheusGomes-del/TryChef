@@ -15,15 +15,18 @@ const CardS = styled.div`
 
 export default function FoodCard(props) {
   const { food, idTest } = props;
+
   return (
-    <CardS data-testid={ `${idTest}-recipe-card` }>
-      <img
-        src={ food.strMealThumb }
-        alt={ food.strMeal }
-        data-testid={ `${idTest}-card-img` }
-      />
-      <h3 data-testid={ `${idTest}-card-name` }>{ food.strMeal }</h3>
-    </CardS>
+    <div>
+      <CardS data-testid={ `${idTest}-recipe-card` }>
+        <img
+          src={ food.strMealThumb }
+          alt={ food.strMeal }
+          data-testid={ `${idTest}-card-img` }
+        />
+        <h3 data-testid={ `${idTest}-card-name` }>{ food.strMeal }</h3>
+      </CardS>
+    </div>
   );
 }
 
