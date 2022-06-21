@@ -29,12 +29,6 @@ function BarraDeBusca() {
 
   return (
     <form>
-      <button
-        type="button"
-        data-testid="search-top-btn"
-      >
-        lupa
-      </button>
       <label htmlFor="input-search">
         <input
           type="text"

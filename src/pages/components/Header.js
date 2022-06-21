@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
+import BarraDeBusca from './BarraDeBusca';
 
 function Header({ title, enableSearchButton = false }) {
   const [displaySearchInput, setDisplaySearchInput] = useState(false);
@@ -32,10 +33,7 @@ function Header({ title, enableSearchButton = false }) {
         data-testid="search-top-btn"
       /> }
 
-      { displaySearchInput && <input
-        type="text"
-        data-testid="search-input"
-      /> }
+      { displaySearchInput && <BarraDeBusca /> }
     </header>
   );
 }
