@@ -6,7 +6,7 @@ export default function ExploreNationalities() {
   return (
     <>
       <Header title="Explore Nationalities" enableSearchButton />
-      <div>ExploreNationalities</div>
+      <div>Explore Nationalities</div>
       <MenuBar />
     </>
   );
