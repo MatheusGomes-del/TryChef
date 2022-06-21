@@ -96,6 +96,7 @@ export default function AppProvider({ children }) {
         return error;
       }
     }
+
     getFoods();
     getDrinks();
   }, []);
