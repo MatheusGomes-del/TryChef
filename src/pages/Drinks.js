@@ -9,7 +9,7 @@ export default function Drinks() {
 
   return (
     <>
-      <Header />
+      <Header title="Drinks" enableSearchButton />
       <div>
         { list.map((item, index) => (
           <DrinkCard key={ item.idDrink } drink={ item } idTest={ index } />

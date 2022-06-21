@@ -5,7 +5,7 @@ import MenuBar from './components/MenuBar';
 export default function Profile() {
   return (
     <>
-      <Header />
+      <Header title="Profile" />
       <div>Profile</div>
       <MenuBar />
     </>
