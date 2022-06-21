@@ -1,31 +1,31 @@
-export function getMealsToken() {
-  if (localStorage.length > 0) {
-    const storage = localStorage.getItem('mealsToken');
-    return storage;
-  }
-}
+// export function getMealsToken() {
+//   if (localStorage.length > 0) {
+//     const storage = localStorage.getItem('mealsToken');
+//     return storage;
+//   }
+// }
 
 export function setMealsToken(token) {
   localStorage.setItem('mealsToken', token);
 }
 
-export function getCocktailsToken() {
-  if (localStorage.length > 0) {
-    const storage = localStorage.getItem('cocktailsToken');
-    return storage;
-  }
-}
+// export function getCocktailsToken() {
+//   if (localStorage.length > 0) {
+//     const storage = localStorage.getItem('cocktailsToken');
+//     return storage;
+//   }
+// }
 
 export function setCocktailsToken(token) {
   localStorage.setItem('cocktailsToken', token);
 }
 
-export function getEmail() {
-  if (localStorage.length > 0) {
-    const storage = JSON.parse(localStorage.getItem('user'));
-    return storage;
-  }
-}
+// export function getEmail() {
+//   if (localStorage.length > 0) {
+//     const storage = JSON.parse(localStorage.getItem('user'));
+//     return storage;
+//   }
+// }
 
 export function saveEmail(email) {
   localStorage.setItem('user', JSON.stringify(email));

@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from './components/Header';
+import AppContext from '../context/AppContext';
+import DrinkCard from './components/DrinkCard';
 import MenuBar from './components/MenuBar';
 
 export default function Drinks() {
+  const { list } = useContext(AppContext);
+
   return (
-    <div>
+    <>
       <Header title="Drinks" enableSearchButton />
-      <div>Drinks</div>
+      <div>
+        { list.map((item, index) => (
+          <DrinkCard key={ item.idDrink } drink={ item } idTest={ index } />
+        ))}
+
+      </div>
       <MenuBar />
-    </div>
+    </>
   );
 }
