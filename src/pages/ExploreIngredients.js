@@ -6,7 +6,7 @@ export default function ExploreIngredients() {
   return (
     <>
       <Header title="Explore Ingredients" />
-      <div>ExploreIngredients</div>
+      <div>Explore Ingredients</div>
       <MenuBar />
     </>
   );

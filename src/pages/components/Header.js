@@ -6,7 +6,7 @@ import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
 import BarraDeBusca from './BarraDeBusca';
 
-function Header({ title, enableSearchButton = false }) {
+function Header({ title, enableSearchButton }) {
   const [displaySearchInput, setDisplaySearchInput] = useState(false);
 
   const showSearchInput = () => {
@@ -40,7 +40,11 @@ function Header({ title, enableSearchButton = false }) {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  enableSearchButton: PropTypes.bool.isRequired,
+  enableSearchButton: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  enableSearchButton: false,
 };
 
 export default Header;
