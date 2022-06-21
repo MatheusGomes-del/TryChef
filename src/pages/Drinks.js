@@ -6,7 +6,7 @@ export default function Drinks() {
   return (
     <div>
       <Header title="Drinks" enableSearchButton />
-      Drinks
+      <div>Drinks</div>
       <MenuBar />
     </div>
   );

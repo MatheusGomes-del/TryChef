@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -6,6 +6,12 @@ import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
 
 function Header({ title, enableSearchButton = false }) {
+  const [displaySearchInput, setDisplaySearchInput] = useState(false);
+
+  const showSearchInput = () => {
+    setDisplaySearchInput(!displaySearchInput);
+  };
+
   return (
     <header>
       <Link to="/profile">
@@ -21,14 +27,15 @@ function Header({ title, enableSearchButton = false }) {
       { enableSearchButton && <img
         src={ searchIcon }
         alt="search"
+        onClick={ showSearchInput }
         role="presentation"
         data-testid="search-top-btn"
       /> }
 
-      <input
+      { displaySearchInput && <input
         type="text"
         data-testid="search-input"
-      />
+      /> }
     </header>
   );
 }
