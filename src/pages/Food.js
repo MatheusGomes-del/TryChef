@@ -12,7 +12,12 @@ export default function Food() {
       <Header title="Foods" enableSearchButton />
       <div>
         { list.map((item, index) => (
-          <FoodCard key={ item.idMeal } food={ item } idTest={ index } />
+          <FoodCard
+            key={ item.idMeal }
+            food={ item }
+            idTest={ index }
+            test="-card-name"
+          />
         ))}
       </div>
       <MenuBar />

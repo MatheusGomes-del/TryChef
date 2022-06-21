@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AppContext from './AppContext';
+import { getDoneRecipes } from '../services/localStorage';
 
 export default function AppProvider({ children }) {
   const [inputSearch, setInputSearch] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const [list, setList] = useState([]);
+  const [doneRecipes, setDoneRecipes] = useState([]);
+
+  const recipesFinished = () => {
+    const doneRecipesList = getDoneRecipes() || [];
+    setDoneRecipes(doneRecipesList);
+  };
 
   const handleInputSearch = ({ target }) => {
     setInputSearch(target.value);
@@ -65,6 +72,8 @@ export default function AppProvider({ children }) {
     handleInputSearch,
     getList,
     list,
+    doneRecipes,
+    recipesFinished,
   };
   return (
     <AppContext.Provider value={ contextValue }>

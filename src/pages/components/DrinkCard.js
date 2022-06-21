@@ -4,28 +4,29 @@ import styled from 'styled-components';
 
 const CardS = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
-  width: 150px;
+  flex-direction: column;
+  width: 200px;
   height: 150px;
-  margin: 2vh;
   img{
     width: 100%;
   }
 `;
 
 export default function DrinkCard(props) {
-  const { drink, idTest } = props;
-  console.log(idTest);
-  console.log(drink);
+  const { drink, idTest, test } = props;
   return (
+
     <CardS data-testid={ `${idTest}-recipe-card` }>
       <img
         src={ drink.strDrinkThumb }
         alt={ drink.strDrink }
         data-testid={ `${idTest}-card-img` }
       />
-      <h3 data-testid={ `${idTest}-card-name` }>{ drink.strDrink }</h3>
+      <h3 data-testid={ `${idTest}-${test}` }>{ drink.strDrink }</h3>
     </CardS>
+
   );
 }
 
@@ -37,4 +38,5 @@ DrinkCard.propTypes = {
     }),
   ).isRequired,
   idTest: PropTypes.string.isRequired,
+  test: PropTypes.string.isRequired,
 };

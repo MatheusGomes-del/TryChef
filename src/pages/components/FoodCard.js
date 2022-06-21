@@ -4,17 +4,18 @@ import styled from 'styled-components';
 
 const CardS = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
-  width: 150px;
+  flex-direction: column;
+  width: 200px;
   height: 150px;
-  margin: 2vh;
   img{
     width: 100%;
   }
 `;
 
 export default function FoodCard(props) {
-  const { food, idTest } = props;
+  const { food, idTest, test } = props;
   return (
     <CardS data-testid={ `${idTest}-recipe-card` }>
       <img
@@ -22,7 +23,7 @@ export default function FoodCard(props) {
         alt={ food.strMeal }
         data-testid={ `${idTest}-card-img` }
       />
-      <h3 data-testid={ `${idTest}-card-name` }>{ food.strMeal }</h3>
+      <h3 data-testid={ `${idTest}-${test}` }>{ food.strMeal }</h3>
     </CardS>
   );
 }
@@ -35,4 +36,5 @@ FoodCard.propTypes = {
     }),
   ).isRequired,
   idTest: PropTypes.string.isRequired,
+  test: PropTypes.string.isRequired,
 };

@@ -30,3 +30,14 @@ export function setCocktailsToken(token) {
 export function saveEmail(email) {
   localStorage.setItem('user', JSON.stringify(email));
 }
+
+export function getDoneRecipes() {
+  if (localStorage.length > 0) {
+    const storage = JSON.parse(localStorage.getItem('doneRecipes'));
+    return storage;
+  }
+}
+
+export function setDoneRecipes(doneRecipe) {
+  localStorage.setItem('doneRecipes', JSON.stringify(doneRecipe));
+}
