@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import AppContext from './AppContext';
 import { getDoneRecipes } from '../services/localStorage';
@@ -13,6 +13,8 @@ export default function AppProvider({ children }) {
     const doneRecipesList = getDoneRecipes() || [];
     setDoneRecipes(doneRecipesList);
   };
+  const [drinks, setDrinks] = useState([]);
+  const [foods, setFoods] = useState([]);
 
   const handleInputSearch = ({ target }) => {
     setInputSearch(target.value);
@@ -65,6 +67,47 @@ export default function AppProvider({ children }) {
     }
   }
 
+  useEffect(() => {
+    async function getDrinks() {
+      try {
+        const endopint = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+        const response = await fetch(endopint);
+        const { drinks: array } = await response.json();
+
+        let newListDrink = array;
+        const eleven = 11;
+        if (array.length > eleven) {
+          const twelve = 12;
+          newListDrink = array.slice(0, twelve);
+        }
+        setDrinks(newListDrink);
+      } catch (error) {
+        return error;
+      }
+    }
+
+    async function getFoods() {
+      try {
+        const endopint = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+        const response = await fetch(endopint);
+        const { meals: array } = await response.json();
+
+        let newListFood = array;
+        const eleven = 11;
+        if (array.length > eleven) {
+          const twelve = 12;
+          newListFood = array.slice(0, twelve);
+        }
+        setFoods(newListFood);
+      } catch (error) {
+        return error;
+      }
+    }
+
+    getFoods();
+    getDrinks();
+  }, []);
+
   const contextValue = {
     inputSearch,
     typeFilter,
@@ -74,6 +117,8 @@ export default function AppProvider({ children }) {
     list,
     doneRecipes,
     recipesFinished,
+    foods,
+    drinks,
   };
   return (
     <AppContext.Provider value={ contextValue }>
