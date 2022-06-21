@@ -14,7 +14,6 @@ export default function Drinks() {
         { list.map((item, index) => (
           <DrinkCard key={ item.idDrink } drink={ item } idTest={ index } />
         ))}
-
       </div>
       <MenuBar />
     </>

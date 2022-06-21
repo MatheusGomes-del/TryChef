@@ -9,13 +9,11 @@ export default function Food() {
 
   return (
     <>
-
       <Header title="Foods" enableSearchButton />
       <div>
         { list.map((item, index) => (
           <FoodCard key={ item.idMeal } food={ item } idTest={ index } />
         ))}
-
       </div>
       <MenuBar />
     </>
