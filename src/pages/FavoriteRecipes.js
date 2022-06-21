@@ -2,12 +2,12 @@ import React from 'react';
 import Header from './components/Header';
 import MenuBar from './components/MenuBar';
 
-export default function Drinks() {
+export default function FavoriteRecipes() {
   return (
-    <div>
-      <Header title="Drinks" enableSearchButton />
-      <div>Drinks</div>
+    <>
+      <Header title="Favorite Recipes" />
+      <div>FavoriteRecipes</div>
       <MenuBar />
-    </div>
+    </>
   );
 }
