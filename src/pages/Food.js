@@ -6,14 +6,23 @@ import MenuBar from './components/MenuBar';
 
 export default function Food() {
   const { list } = useContext(AppContext);
+  const { foods } = useContext(AppContext);
+  console.log(foods);
 
   return (
     <>
       <Header title="Foods" enableSearchButton />
       <div>
-        { list.map((item, index) => (
-          <FoodCard key={ item.idMeal } food={ item } idTest={ index } />
-        ))}
+        {
+          foods.map((item, i) => (
+            <FoodCard key={ item.idMeal } food={ item } idTest={ i } />
+          ))
+        }
+        {
+          list.map((item, index) => (
+            <FoodCard key={ item.idMeal } food={ item } idTest={ index } />
+          ))
+        }
       </div>
       <MenuBar />
     </>

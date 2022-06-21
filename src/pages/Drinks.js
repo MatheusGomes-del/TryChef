@@ -6,14 +6,32 @@ import MenuBar from './components/MenuBar';
 
 export default function Drinks() {
   const { list } = useContext(AppContext);
+  const { drinks } = useContext(AppContext);
+  console.log(drinks);
 
   return (
     <>
       <Header title="Drinks" enableSearchButton />
       <div>
-        { list.map((item, index) => (
-          <DrinkCard key={ item.idDrink } drink={ item } idTest={ index } />
-        ))}
+        {
+          drinks.map((item, i) => (
+            <DrinkCard
+              key={ item.idDrink }
+              drink={ item }
+              idTest={ i }
+            />
+          ))
+        }
+        ;
+        {
+          list.map((item, index) => (
+            <DrinkCard
+              key={ item.idDrink }
+              drink={ item }
+              idTest={ index }
+            />
+          ))
+        }
       </div>
       <MenuBar />
     </>
