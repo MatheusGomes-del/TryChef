@@ -85,7 +85,6 @@ export default function Food() {
               onClick={ () => filterFood(category.strCategory) }
             >
               { category.strCategory }
-
             </button>
           )).slice(0, Number(magigNumber)) }
         </div>
