@@ -34,9 +34,10 @@ height: 100vh;
 `;
 
 export default function Food() {
-  const { list, getFoods, setList } = useContext(AppContext);
+  const { list, getFoods, setList, foods } = useContext(AppContext);
   const [categoryFood, setCategoryFood] = useState([]);
   const [magigNumber] = useState('5');
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     async function getCategorysFood() {
@@ -66,7 +67,15 @@ export default function Food() {
         newList = meals.slice(0, twelve);
       }
       setList(newList);
-      console.log(foodfiltered);
+      setToggle(!toggle);
+      if (!toggle === false && list[0].strMeal !== newList[0].strMeal) {
+        setList(newList);
+        setToggle(true);
+      }
+      if (!toggle === false && list[0].strMeal === newList[0].strMeal) {
+        setList(foods);
+        setToggle(!toggle);
+      }
     } catch (error) {
       return error;
     }
@@ -87,6 +96,13 @@ export default function Food() {
               { category.strCategory }
             </button>
           )).slice(0, Number(magigNumber)) }
+          <button
+            data-testid="All-category-filter"
+            type="button"
+            onClick={ () => setList(foods) }
+          >
+            All
+          </button>
         </div>
         <section>
           {

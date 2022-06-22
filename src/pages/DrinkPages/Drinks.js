@@ -34,9 +34,10 @@ height: 100vh;
 `;
 
 export default function Drinks() {
-  const { list, getDrinks, setList } = useContext(AppContext);
+  const { list, getDrinks, setList, drinks } = useContext(AppContext);
   const [categoryDrink, setCategoryDrink] = useState([]);
   const [magigNumber] = useState('5');
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     async function getCategorysDrink() {
@@ -66,6 +67,15 @@ export default function Drinks() {
         newList = drink.slice(0, twelve);
       }
       setList(newList);
+      setToggle(!toggle);
+      if (!toggle === false && list[0].idDrink !== newList[0].idDrink) {
+        setList(newList);
+        setToggle(true);
+      }
+      if (!toggle === false && list[0].idDrink === newList[0].idDrink) {
+        setList(drinks);
+        setToggle(!toggle);
+      }
     } catch (error) {
       return error;
     }
@@ -87,6 +97,13 @@ export default function Drinks() {
 
             </button>
           )).slice(0, Number(magigNumber)) }
+          <button
+            data-testid="All-category-filter"
+            type="button"
+            onClick={ () => setList(drinks) }
+          >
+            All
+          </button>
         </div>
         <section>
           {
