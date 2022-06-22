@@ -41,3 +41,21 @@ export function getDoneRecipes() {
 export function setDoneRecipes(doneRecipe) {
   localStorage.setItem('doneRecipes', JSON.stringify(doneRecipe));
 }
+
+export function getInProgressRecipes() {
+  const storage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  return storage;
+}
+
+export function setInProgressRecipes(inProgressRecipe) {
+  localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipe));
+}
+
+export function getFavoriteRecipes() {
+  const storage = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  return storage;
+}
+
+export function setFavoriteRecipes(favoriteRecipe) {
+  localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipe));
+}

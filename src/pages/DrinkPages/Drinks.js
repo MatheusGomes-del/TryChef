@@ -1,0 +1,89 @@
+import React, { useContext, useEffect, useState } from 'react';
+import styled from 'styled-components';
+import Header from '../components/Header';
+import AppContext from '../../context/AppContext';
+import DrinkCard from '../components/DrinkCard';
+import MenuBar from '../components/MenuBar';
+
+const ListStyle = styled.section`
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+align-items: center;
+width: auto;
+height: auto;
+section{
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: auto;
+  height: auto;
+}
+`;
+
+const DrinkStyle = styled.section`
+display: flex;
+flex-direction: column;
+
+align-items: center;
+width: 100vw;
+height: 100vh;
+
+`;
+
+export default function Drinks() {
+  const { list, getDrinks } = useContext(AppContext);
+  const [categoryDrink, setCategoryDrink] = useState([]);
+  const [magigNumber] = useState('5');
+
+  useEffect(() => {
+    async function getCategorysDrink() {
+      try {
+        const endopint = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+        const response = await fetch(endopint);
+        const { drinks: drink } = await response.json();
+        setCategoryDrink(drink);
+      } catch (error) {
+        return error;
+      }
+    }
+    getDrinks();
+    getCategorysDrink();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <DrinkStyle>
+      <Header title="Drinks" enableSearchButton />
+      <ListStyle>
+        <div>
+          { categoryDrink.map((category, index) => (
+            <button
+              data-testid={ `${category.strCategory}-category-filter` }
+              type="button"
+              key={ index }
+            >
+              { category.strCategory }
+
+            </button>
+          )).slice(0, Number(magigNumber)) }
+        </div>
+        <section>
+          {
+            list.map((item, indexList) => (
+              <DrinkCard
+                key={ item.idDrink }
+                drink={ item }
+                idTest={ indexList }
+                test="card-name"
+              />
+            ))
+          }
+        </section>
+      </ListStyle>
+      <MenuBar />
+    </DrinkStyle>
+  );
+}

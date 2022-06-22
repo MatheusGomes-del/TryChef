@@ -2,18 +2,20 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import Login from './pages/Login';
-import Food from './pages/Food';
-import Drinks from './pages/Drinks';
-import Explore from './pages/Explore';
-import ExploreFood from './pages/ExploreFood';
-import ExploreIngredients from './pages/ExploreIngredients';
-import ExploreNationalities from './pages/ExploreNationalities';
-import ExploreDrinks from './pages/ExploreDrinks';
-import Profile from './pages/Profile';
-import DrinkDetails from './pages/DrinkDetails';
-import FoodDetails from './pages/FoodDetails';
+import Food from './pages/FoodPages/Food';
+import FoodDetails from './pages/FoodPages/FoodDetails';
+import FoodInProgress from './pages/FoodPages/FoodInProgress';
+import Drinks from './pages/DrinkPages/Drinks';
+import DrinkDetails from './pages/DrinkPages/DrinkDetails';
+import DrinkInProgress from './pages/DrinkPages/DrinkInProgress';
+import Explore from './pages/ExplorePages/Explore';
+import ExploreFood from './pages/ExplorePages/ExploreFood';
+import ExploreDrinks from './pages/ExplorePages/ExploreDrinks';
+import ExploreIngredients from './pages/ExplorePages/ExploreIngredients';
+import ExploreNationalities from './pages/ExplorePages/ExploreNationalities';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
+import Profile from './pages/Profile';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -32,8 +34,10 @@ function App() {
         <Route exact path="/" component={ Login } />
         <Route exact path="/foods" component={ Food } />
         <Route exact path="/foods/:id" component={ FoodDetails } />
+        <Route exact path="/foods/:id/in-progress" component={ FoodInProgress } />
         <Route exact path="/drinks" component={ Drinks } />
         <Route exact path="/drinks/:id" component={ DrinkDetails } />
+        <Route exact path="/drinks/:id/in-progress" component={ DrinkInProgress } />
         <Route exact path="/explore" component={ Explore } />
         <Route exact path="/explore/foods" component={ ExploreFood } />
         <Route exact path="/explore/drinks" component={ ExploreDrinks } />

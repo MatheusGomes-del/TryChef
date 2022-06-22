@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AppContext from './AppContext';
-import { getDoneRecipes } from '../services/localStorage';
 
 export default function AppProvider({ children }) {
   const [inputSearch, setInputSearch] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const [list, setList] = useState([]);
-  const [doneRecipes, setDoneRecipes] = useState([]);
-
-  const recipesFinished = () => {
-    const doneRecipesList = getDoneRecipes() || [];
-    setDoneRecipes(doneRecipesList);
-  };
   const [drinks, setDrinks] = useState([]);
   const [foods, setFoods] = useState([]);
+  const [recipeDetails, setRecipeDetails] = useState({});
+
+  const actualRecipe = (recipe) => {
+    setRecipeDetails(recipe);
+  };
 
   const handleInputSearch = ({ target }) => {
     setInputSearch(target.value);
@@ -44,11 +42,9 @@ export default function AppProvider({ children }) {
 
   async function getList(obj) {
     try {
-      // console.log(obj);
       const url = verifyValue(obj);
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
       const listData = data.meals || data.drinks || undefined;
 
       if (listData === undefined) {
@@ -67,46 +63,43 @@ export default function AppProvider({ children }) {
     }
   }
 
-  useEffect(() => {
-    async function getDrinks() {
-      try {
-        const endopint = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-        const response = await fetch(endopint);
-        const { drinks: array } = await response.json();
+  async function getDrinks() {
+    try {
+      const endopint = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+      const response = await fetch(endopint);
+      const { drinks: array } = await response.json();
 
-        let newListDrink = array;
-        const eleven = 11;
-        if (array.length > eleven) {
-          const twelve = 12;
-          newListDrink = array.slice(0, twelve);
-        }
-        setDrinks(newListDrink);
-      } catch (error) {
-        return error;
+      let newListDrink = array;
+      const eleven = 11;
+      if (array.length > eleven) {
+        const twelve = 12;
+        newListDrink = array.slice(0, twelve);
       }
+      setDrinks(newListDrink);
+      setList(newListDrink);
+    } catch (error) {
+      return error;
     }
+  }
 
-    async function getFoods() {
-      try {
-        const endopint = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-        const response = await fetch(endopint);
-        const { meals: array } = await response.json();
+  async function getFoods() {
+    try {
+      const endopint = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+      const response = await fetch(endopint);
+      const { meals: array } = await response.json();
 
-        let newListFood = array;
-        const eleven = 11;
-        if (array.length > eleven) {
-          const twelve = 12;
-          newListFood = array.slice(0, twelve);
-        }
-        setFoods(newListFood);
-      } catch (error) {
-        return error;
+      let newListFood = array;
+      const eleven = 11;
+      if (array.length > eleven) {
+        const twelve = 12;
+        newListFood = array.slice(0, twelve);
       }
+      setFoods(newListFood);
+      setList(newListFood);
+    } catch (error) {
+      return error;
     }
-
-    getFoods();
-    getDrinks();
-  }, []);
+  }
 
   const contextValue = {
     inputSearch,
@@ -115,10 +108,12 @@ export default function AppProvider({ children }) {
     handleInputSearch,
     getList,
     list,
-    doneRecipes,
-    recipesFinished,
     foods,
     drinks,
+    getFoods,
+    getDrinks,
+    recipeDetails,
+    actualRecipe,
   };
   return (
     <AppContext.Provider value={ contextValue }>
