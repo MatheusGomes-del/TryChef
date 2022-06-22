@@ -1,13 +1,13 @@
-import React from 'react';
-import { getInProgressRecipes } from '../../services/localStorage';
+import React, { useContext } from 'react';
+import AppContext from '../../context/AppContext';
 
 export default function FoodInProgress() {
-  const inProgressRecipesList = getInProgressRecipes() || {};
-  console.log(inProgressRecipesList);
-  const { strMealThumb, strMeal, strCategory, strInstructions } = inProgressRecipesList;
+  const { recipeDetails } = useContext(AppContext);
+  console.log(recipeDetails);
+  const { strMealThumb, strMeal, strCategory, strInstructions } = recipeDetails;
 
   const radiosIngredients = () => {
-    const entries = Object.entries(inProgressRecipesList);
+    const entries = Object.entries(recipeDetails);
     const ingredientes = entries.filter((ingrediente) => (
       ingrediente[0].includes('strIngredient') && ingrediente[1]));
     return (
