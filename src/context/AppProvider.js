@@ -108,6 +108,7 @@ export default function AppProvider({ children }) {
     handleInputSearch,
     getList,
     list,
+    setList,
     foods,
     drinks,
     getFoods,

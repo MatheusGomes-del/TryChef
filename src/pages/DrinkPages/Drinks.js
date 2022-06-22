@@ -34,7 +34,7 @@ height: 100vh;
 `;
 
 export default function Drinks() {
-  const { list, getDrinks } = useContext(AppContext);
+  const { list, getDrinks, setList } = useContext(AppContext);
   const [categoryDrink, setCategoryDrink] = useState([]);
   const [magigNumber] = useState('5');
 
@@ -54,6 +54,23 @@ export default function Drinks() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  async function filterDrink(param) {
+    try {
+      const endopint = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${param}`;
+      const response = await fetch(endopint);
+      const { drinks: drink } = await response.json();
+      let newList = drink;
+      const eleven = 11;
+      if (drink.length > eleven) {
+        const twelve = 12;
+        newList = drink.slice(0, twelve);
+      }
+      setList(newList);
+    } catch (error) {
+      return error;
+    }
+  }
+
   return (
     <DrinkStyle>
       <Header title="Drinks" enableSearchButton />
@@ -64,6 +81,7 @@ export default function Drinks() {
               data-testid={ `${category.strCategory}-category-filter` }
               type="button"
               key={ index }
+              onClick={ () => filterDrink(category.strCategory) }
             >
               { category.strCategory }
 

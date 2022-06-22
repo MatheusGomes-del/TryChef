@@ -34,7 +34,7 @@ height: 100vh;
 `;
 
 export default function Food() {
-  const { list, getFoods } = useContext(AppContext);
+  const { list, getFoods, setList } = useContext(AppContext);
   const [categoryFood, setCategoryFood] = useState([]);
   const [magigNumber] = useState('5');
 
@@ -54,6 +54,24 @@ export default function Food() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  async function filterFood(param) {
+    try {
+      const endopint = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${param}`;
+      const response = await fetch(endopint);
+      const { meals } = await response.json();
+      let newList = meals;
+      const eleven = 11;
+      if (meals.length > eleven) {
+        const twelve = 12;
+        newList = meals.slice(0, twelve);
+      }
+      setList(newList);
+      console.log(foodfiltered);
+    } catch (error) {
+      return error;
+    }
+  }
+
   return (
     <FoodStyle>
       <Header title="Foods" enableSearchButton />
@@ -64,9 +82,9 @@ export default function Food() {
               data-testid={ `${category.strCategory}-category-filter` }
               type="button"
               key={ index }
+              onClick={ () => filterFood(category.strCategory) }
             >
               { category.strCategory }
-
             </button>
           )).slice(0, Number(magigNumber)) }
         </div>
