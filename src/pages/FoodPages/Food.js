@@ -34,7 +34,8 @@ height: 100vh;
 `;
 
 export default function Food() {
-  const { list, getFoods, setList, foods } = useContext(AppContext);
+  const {
+    list, getFoods, setList, foods, setIgredient, igredient } = useContext(AppContext);
   const [categoryFood, setCategoryFood] = useState([]);
   const [magigNumber] = useState('5');
   const [toggle, setToggle] = useState(false);
@@ -52,6 +53,28 @@ export default function Food() {
     }
     getFoods();
     getCategorysFood();
+
+    if (igredient !== '') {
+      const getByIgredient = async () => {
+        try {
+          const endpoint = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${igredient}`;
+          const response = await fetch(endpoint);
+          const data = await response.json();
+          let newList = data.meals;
+          console.log(data.meals);
+          const eleven = 11;
+          if (data.meals.length > eleven) {
+            const twelve = 12;
+            newList = data.meals.slice(0, twelve);
+          }
+          setList(newList);
+        } catch (error) {
+          return error;
+        }
+      };
+      getByIgredient();
+      setIgredient('');
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
