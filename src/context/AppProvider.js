@@ -9,6 +9,7 @@ export default function AppProvider({ children }) {
   const [drinks, setDrinks] = useState([]);
   const [foods, setFoods] = useState([]);
   const [recipeDetails, setRecipeDetails] = useState({});
+  const [igredient, setIgredient] = useState('');
 
   const actualRecipe = (recipe) => {
     setRecipeDetails(recipe);
@@ -115,6 +116,8 @@ export default function AppProvider({ children }) {
     getDrinks,
     recipeDetails,
     actualRecipe,
+    igredient,
+    setIgredient,
   };
   return (
     <AppContext.Provider value={ contextValue }>
