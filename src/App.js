@@ -17,6 +17,7 @@ import ExploreNationalities from './pages/ExplorePages/ExploreNationalities';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -60,6 +61,7 @@ function App() {
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/done-recipes" component={ DoneRecipes } />
         <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
+        <Route exact path="*" component={ NotFound } />
       </Switch>
     </>
   );
