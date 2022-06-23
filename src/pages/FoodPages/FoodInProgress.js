@@ -1,32 +1,36 @@
 import React, { useContext } from 'react';
 import AppContext from '../../context/AppContext';
+import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
+import shareIcon from '../../images/shareIcon.svg';
 
 export default function FoodInProgress() {
   const { recipeDetails } = useContext(AppContext);
-  console.log(recipeDetails);
   const { strMealThumb, strMeal, strCategory, strInstructions } = recipeDetails;
+  const { ingredientsList, quantitiesList } = recipeDetails;
 
   const radiosIngredients = () => {
-    const entries = Object.entries(recipeDetails);
-    const ingredientes = entries.filter((ingrediente) => (
-      ingrediente[0].includes('strIngredient') && ingrediente[1]));
-    return (
-      ingredientes.map((ingrediente, index) => (
+    const checkIngredients = ingredientsList.map((ingrediente, index) => (
+      <li key={ index }>
         <label htmlFor={ `ingrediente${index}` } key={ index }>
-          {ingrediente}
+          {`${ingrediente} - ${quantitiesList[index]}`}
           <input
             id={ `ingrediente${index}` }
+            data-testid={ `${index}-ingredient-step` }
             key={ index }
             type="checkbox"
           />
         </label>
-      ))
-    );
+      </li>
+    ));
+    return checkIngredients;
   };
+
   return (
     <>
       <p>Comida em precesso</p>
       <img
+        width="420"
+        height="315"
         data-testid="recipe-photo"
         src={ strMealThumb }
         alt={ strMeal }
@@ -40,13 +44,13 @@ export default function FoodInProgress() {
         data-testid="share-btn"
         type="button"
       >
-        Compartilhar
+        <img src={ shareIcon } alt="button share" />
       </button>
       <button
         type="button"
         data-testid="favorite-btn"
       >
-        Favoritar
+        <img src={ whiteHeartIcon } alt="button favorite" />
       </button>
       <p
         data-testid="recipe-category"
