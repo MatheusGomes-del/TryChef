@@ -9,7 +9,7 @@ export default function Profile() {
 
   useEffect(() => {
     function getEmailFromLocalStorage() {
-      const { email } = JSON.parse(localStorage.getItem('user'));
+      const email = JSON.parse(localStorage.getItem('user'));
       setEmail(email);
       console.log(email);
     }
@@ -22,7 +22,7 @@ export default function Profile() {
       <Header title="Profile" />
       <div>
         <section>
-          <p data-testid="profile-email">{ emailUser }</p>
+          <p data-testid="profile-email">{ emailUser?.email }</p>
           <button
             type="button"
             data-testid="profile-done-btn"
