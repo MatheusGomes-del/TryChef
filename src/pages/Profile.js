@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Header from './components/Header';
 import MenuBar from './components/MenuBar';
 
 export default function Profile() {
   const [emailUser, setEmail] = useState('');
+  const history = useHistory();
 
   useEffect(() => {
     function getEmailFromLocalStorage() {
@@ -25,6 +27,7 @@ export default function Profile() {
             type="button"
             data-testid="profile-done-btn"
             className="buttons"
+            onClick={ () => history.push('/done-recipes') }
           >
             Done Recipes
 
@@ -32,6 +35,7 @@ export default function Profile() {
           <button
             type="button"
             data-testid="profile-favorite-btn"
+            onClick={ () => history.push('/favorite-recipes') }
           >
             Favorite Recipes
 
@@ -39,6 +43,7 @@ export default function Profile() {
           <button
             type="button"
             data-testid="profile-logout-btn"
+            onClick={ () => { localStorage.clear(); history.push('/'); } }
           >
             Logout
 
