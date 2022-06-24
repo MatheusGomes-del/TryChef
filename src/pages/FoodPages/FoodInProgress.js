@@ -1,18 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-
+import styled from 'styled-components';
 import AppContext from '../../context/AppContext';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import shareIcon from '../../images/shareIcon.svg';
+
+const ListaS = styled.p`
+ background: ${({ teste }) => (teste ? 'red' : 'blue')};
+`;
 
 export default function FoodInProgress() {
   const [ingred, setIngred] = useState([]);
   const [quant, setQuant] = useState([]);
   const { recipeDetails } = useContext(AppContext);
   const { strMealThumb, strMeal, strCategory, strInstructions } = recipeDetails;
-  // const { ingredientsList, quantitiesList } = recipeDetails;
   const [shareMessage, setshareMessage] = useState(false);
-  // const [favorite, setFavorite] = useState(false);
+  const [checked, setChecked] = useState(false);
   const { id } = useParams();
   const history = useHistory();
 
@@ -39,6 +42,10 @@ export default function FoodInProgress() {
     copy(`http://localhost:3000${pathname}`);
   };
 
+  const checkButton = ({ target }) => {
+    setChecked(target.checked);
+  };
+
   const radiosIngredients = () => {
     const checkIngredients = ingred.map((ingrediente, index) => (
       <li key={ index }>
@@ -47,10 +54,12 @@ export default function FoodInProgress() {
           data-testid={ `${index}-ingredient-step` }
           key={ index }
           type="checkbox"
+          onClick={ checkButton }
+          // checked={ false }
         />
         {' '}
         <label htmlFor={ `ingrediente${index}` } key={ index }>
-          {`${ingrediente} - ${quant[index]}`}
+          <ListaS teste={ checked }>{`${ingrediente} - ${quant[index]}`}</ListaS>
         </label>
       </li>
     ));
