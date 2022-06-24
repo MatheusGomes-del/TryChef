@@ -20,13 +20,13 @@ export default function FoodCard(props) {
   const { food, idTest, test } = props;
   return (
     <CardS data-testid={ `${idTest}-recipe-card` }>
-      <Link to={ `foods/${food.idMeal || food.id}` }>
+      <Link to={ `/foods/${food.idMeal}` }>
         <img
-          src={ food.strMealThumb || food.image }
-          alt={ food.strMeal || food.name }
+          src={ food.strMealThumb }
+          alt={ food.strMeal }
           data-testid={ `${idTest}-card-img` }
         />
-        <h3 data-testid={ `${idTest}-${test}` }>{ food.strMeal || food.name }</h3>
+        <h3 data-testid={ `${idTest}-${test}` }>{ food.strMeal }</h3>
       </Link>
     </CardS>
   );
@@ -37,9 +37,6 @@ FoodCard.propTypes = {
     strMeal: PropTypes.string.isRequired,
     strMealThumb: PropTypes.string.isRequired,
     idMeal: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
   }).isRequired,
   idTest: PropTypes.number.isRequired,
   test: PropTypes.string.isRequired,
