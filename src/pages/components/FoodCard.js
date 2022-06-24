@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+// import { setFavoriteRecipes } from '../../services/localStorage';
 
 const CardS = styled.div`
   display: flex;
@@ -19,7 +20,7 @@ export default function FoodCard(props) {
   const { food, idTest, test } = props;
   return (
     <CardS data-testid={ `${idTest}-recipe-card` }>
-      <Link to={ `foods/${food.idMeal}` }>
+      <Link to={ `/foods/${food.idMeal}` }>
         <img
           src={ food.strMealThumb }
           alt={ food.strMeal }

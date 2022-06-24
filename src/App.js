@@ -11,11 +11,13 @@ import DrinkInProgress from './pages/DrinkPages/DrinkInProgress';
 import Explore from './pages/ExplorePages/Explore';
 import ExploreFood from './pages/ExplorePages/ExploreFood';
 import ExploreDrinks from './pages/ExplorePages/ExploreDrinks';
-import ExploreIngredients from './pages/ExplorePages/ExploreIngredients';
+import ExploreIngredientsFoods from './pages/ExplorePages/ExploreIngredientsFoods';
+import ExploreIngredientsDrinks from './pages/ExplorePages/ExploreIgredientsDrinks';
 import ExploreNationalities from './pages/ExplorePages/ExploreNationalities';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -41,11 +43,15 @@ function App() {
         <Route exact path="/explore" component={ Explore } />
         <Route exact path="/explore/foods" component={ ExploreFood } />
         <Route exact path="/explore/drinks" component={ ExploreDrinks } />
-        <Route exact path="/explore/foods/ingredients" component={ ExploreIngredients } />
+        <Route
+          exact
+          path="/explore/foods/ingredients"
+          component={ ExploreIngredientsFoods }
+        />
         <Route
           exact
           path="/explore/drinks/ingredients"
-          component={ ExploreIngredients }
+          component={ ExploreIngredientsDrinks }
         />
         <Route
           exact
@@ -55,6 +61,7 @@ function App() {
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/done-recipes" component={ DoneRecipes } />
         <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
+        <Route exact path="*" component={ NotFound } />
       </Switch>
     </>
   );

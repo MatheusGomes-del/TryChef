@@ -13,7 +13,7 @@ align-items: center;
 width: auto;
 height: auto;
 section{
-  margin-top: 50px;
+  margin-top: 80px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -34,9 +34,14 @@ height: 100vh;
 `;
 
 export default function Drinks() {
-  const { list, getDrinks, setList } = useContext(AppContext);
+  const {
+    list,
+    getDrinks, setList, drinks, igredient, setIgredient } = useContext(AppContext);
   const [categoryDrink, setCategoryDrink] = useState([]);
   const [magigNumber] = useState('5');
+  const [toggle, setToggle] = useState(false);
+
+  console.log(igredient);
 
   useEffect(() => {
     async function getCategorysDrink() {
@@ -51,6 +56,28 @@ export default function Drinks() {
     }
     getDrinks();
     getCategorysDrink();
+
+    if (igredient !== '') {
+      const getByIgredient = async () => {
+        try {
+          const endpoint = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${igredient}`;
+          const response = await fetch(endpoint);
+          const data = await response.json();
+          let newList = data.drinks;
+          console.log(data.drinks);
+          const eleven = 11;
+          if (data.drinks.length > eleven) {
+            const twelve = 12;
+            newList = data.drinks.slice(0, twelve);
+          }
+          setList(newList);
+        } catch (error) {
+          return error;
+        }
+      };
+      getByIgredient();
+      setIgredient('');
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -66,6 +93,15 @@ export default function Drinks() {
         newList = drink.slice(0, twelve);
       }
       setList(newList);
+      setToggle(!toggle);
+      if (!toggle === false && list[0].idDrink !== newList[0].idDrink) {
+        setList(newList);
+        setToggle(true);
+      }
+      if (!toggle === false && list[0].idDrink === newList[0].idDrink) {
+        setList(drinks);
+        setToggle(!toggle);
+      }
     } catch (error) {
       return error;
     }
@@ -87,6 +123,13 @@ export default function Drinks() {
 
             </button>
           )).slice(0, Number(magigNumber)) }
+          <button
+            data-testid="All-category-filter"
+            type="button"
+            onClick={ () => setList(drinks) }
+          >
+            All
+          </button>
         </div>
         <section>
           {
