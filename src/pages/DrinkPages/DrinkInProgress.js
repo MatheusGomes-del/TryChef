@@ -37,7 +37,7 @@ export default function DrinkInProgress() {
         .filter((info) => (info[0].includes('strIngredient') && info[1]))
         .map((ingredient) => ({ name: ingredient[1], done: false }));
       console.log(ingredientsList);
-      setIngred(ingredientsList);
+      // setIngred(ingredientsList);
 
       const quantitiesList = Object.entries(drinks[0])
         .filter((info) => (info[0].includes('strMeasure') && info[1]))
@@ -51,6 +51,8 @@ export default function DrinkInProgress() {
 
       if (inProgressRecipe !== undefined) {
         setIngred(inProgressRecipe);
+      } else {
+        setIngred(ingredientsList);
       }
     };
     fetchDrink();
@@ -177,6 +179,7 @@ export default function DrinkInProgress() {
         type="button"
         data-testid="finish-recipe-btn"
         onClick={ () => history.push('/done-recipes') }
+        disabled={ !ingred.every(({ done }) => done === true) }
       >
         Finish Recipe
       </button>

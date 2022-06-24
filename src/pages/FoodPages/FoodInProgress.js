@@ -178,6 +178,7 @@ export default function FoodInProgress() {
         type="button"
         data-testid="finish-recipe-btn"
         onClick={ () => history.push('/done-recipes') }
+        disabled={ !ingred.every(({ done }) => done === true) }
       >
         Finish Recipe
       </button>
