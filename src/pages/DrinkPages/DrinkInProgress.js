@@ -6,7 +6,8 @@ import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import shareIcon from '../../images/shareIcon.svg';
 import { setInProgressRecipes, getInProgressRecipes,
-  getFavoriteRecipes, setFavoriteRecipes } from '../../services/localStorage';
+  getFavoriteRecipes, setFavoriteRecipes,
+  setDoneRecipes, getDoneRecipes } from '../../services/localStorage';
 
 const copy = require('clipboard-copy');
 
@@ -15,13 +16,30 @@ const ListaS = styled.p`
 `;
 
 const favoriteRecipes = getFavoriteRecipes() || [];
+const inProgressList = getInProgressRecipes() || [];
+const timeElapsed = Date.now();
+const today = new Date(timeElapsed);
+
+const finishRecipe = (drinkInfo) => {
+  const doneRecipes = getDoneRecipes() || [];
+  const newRecipe = {
+    id: drinkInfo.idDrink,
+    type: 'food',
+    nationality: drinkInfo.strArea || '',
+    category: drinkInfo.strCategory || '',
+    alcoholicOrNot: drinkInfo.strAlcoholic || '',
+    name: drinkInfo.strDrink,
+    image: drinkInfo.strDrinkThumb,
+    doneDate: today.toLocaleDateString(),
+    tags: drinkInfo.strTags ? drinkInfo.strTags.split(',') : [],
+  };
+  setDoneRecipes([...doneRecipes, newRecipe]);
+};
 
 export default function DrinkInProgress() {
   const [ingred, setIngred] = useState([]);
   const [quant, setQuant] = useState([]);
   const [drinkInfo, setDrinkInfo] = useState({});
-  // const { recipeDetails } = useContext(AppContext);
-  // const { strMealThumb, strMeal, strCategory, strInstructions } = recipeDetails;
   const [shareMessage, setshareMessage] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const { id } = useParams();
@@ -33,11 +51,11 @@ export default function DrinkInProgress() {
       const { drinks } = await result.json();
 
       setDrinkInfo(drinks[0]);
+      console.log(drinks[0]);
       const ingredientsList = Object.entries(drinks[0])
         .filter((info) => (info[0].includes('strIngredient') && info[1]))
         .map((ingredient) => ({ name: ingredient[1], done: false }));
       console.log(ingredientsList);
-      // setIngred(ingredientsList);
 
       const quantitiesList = Object.entries(drinks[0])
         .filter((info) => (info[0].includes('strMeasure') && info[1]))
@@ -45,7 +63,6 @@ export default function DrinkInProgress() {
       setQuant(quantitiesList);
 
       const inProgress = getInProgressRecipes();
-      console.log(inProgress);
 
       const inProgressRecipe = inProgress?.cocktails[id];
 
@@ -78,12 +95,10 @@ export default function DrinkInProgress() {
     });
     setIngred(newListIng);
 
-    const inProgress = getInProgressRecipes() || {};
-
     const newRecipe = {
-      ...inProgress,
+      ...inProgressList,
       cocktails: {
-        ...inProgress.cocktails,
+        ...inProgressList.cocktails,
         [id]: newListIng,
       },
     };
@@ -178,7 +193,10 @@ export default function DrinkInProgress() {
       <button
         type="button"
         data-testid="finish-recipe-btn"
-        onClick={ () => history.push('/done-recipes') }
+        onClick={ () => {
+          finishRecipe(drinkInfo);
+          history.push('/done-recipes');
+        } }
         disabled={ !ingred.every(({ done }) => done === true) }
       >
         Finish Recipe
