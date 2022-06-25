@@ -53,7 +53,6 @@ export default function DoneRecipes() {
                 </p>
                 <p data-testid={ `${index}-${igredient.tags[1]}-tag` }>
                   { igredient.tags[1] }
-
                 </p>
               </div>
             ))
