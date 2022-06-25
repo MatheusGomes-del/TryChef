@@ -13,12 +13,16 @@ export default function FavoriteRecipes() {
   }, []);
 
   const filterFoods = () => {
-    const foodList = favoriteList.filter(({ type }) => type === 'food');
+    const savedRecipe = getFavoriteRecipes() || [];
+
+    const foodList = savedRecipe.filter(({ type }) => type === 'food');
     setFavoriteRecipes(foodList);
   };
 
   const filterDrinks = () => {
-    const drinkList = favoriteList.filter(({ type }) => type === 'drink');
+    const savedRecipe = getFavoriteRecipes() || [];
+
+    const drinkList = savedRecipe.filter(({ type }) => type === 'drink');
     setFavoriteRecipes(drinkList);
   };
 

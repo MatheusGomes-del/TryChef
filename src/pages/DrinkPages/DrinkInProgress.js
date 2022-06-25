@@ -24,7 +24,7 @@ const finishRecipe = (drinkInfo) => {
   const doneRecipes = getDoneRecipes() || [];
   const newRecipe = {
     id: drinkInfo.idDrink,
-    type: 'food',
+    type: 'drink',
     nationality: drinkInfo.strArea || '',
     category: drinkInfo.strCategory || '',
     alcoholicOrNot: drinkInfo.strAlcoholic || '',
