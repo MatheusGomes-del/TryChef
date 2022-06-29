@@ -1,37 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import AppContext from '../../context/AppContext';
-import DrinkCard from '../components/DrinkCard';
-import MenuBar from '../components/MenuBar';
-
-const ListStyle = styled.section`
-display: flex;
-flex-direction: column;
-flex-wrap: wrap;
-align-items: center;
-width: auto;
-height: auto;
-section{
-  margin-top: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  width: auto;
-  height: auto;
-}
-`;
-
-const DrinkStyle = styled.section`
-display: flex;
-flex-direction: column;
-
-align-items: center;
-width: 100vw;
-height: 100vh;
-
-`;
+import Header from '../../components/Header';
+import AppContext from '../../../context/AppContext';
+import DrinkCard from '../../components/DrinkCard';
+import MenuBar from '../../components/MenuBar';
+import DrinkStyle from './styled';
 
 export default function Drinks() {
   const {
@@ -110,7 +82,7 @@ export default function Drinks() {
   return (
     <DrinkStyle>
       <Header title="Drinks" enableSearchButton />
-      <ListStyle>
+      <div>
         <div>
           { categoryDrink.map((category, index) => (
             <button
@@ -143,7 +115,7 @@ export default function Drinks() {
             ))
           }
         </section>
-      </ListStyle>
+      </div>
       <MenuBar />
     </DrinkStyle>
   );

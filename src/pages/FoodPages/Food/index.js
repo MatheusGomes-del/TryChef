@@ -1,37 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
-import styled from 'styled-components';
-import AppContext from '../../context/AppContext';
-import FoodCard from '../components/FoodCard';
-import Header from '../components/Header';
-import MenuBar from '../components/MenuBar';
-
-const ListStyle = styled.section`
-display: flex;
-flex-direction: column;
-flex-wrap: wrap;
-align-items: center;
-width: auto;
-height: auto;
-section{
-  margin-top: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  width: auto;
-  height: auto;
-}
-`;
-
-const FoodStyle = styled.section`
-display: flex;
-flex-direction: column;
-
-align-items: center;
-width: 100vw;
-height: 100vh;
-
-`;
+import AppContext from '../../../context/AppContext';
+import FoodCard from '../../components/FoodCard';
+import Header from '../../components/Header';
+import MenuBar from '../../components/MenuBar';
+import FoodStyle from './styled';
 
 export default function Food() {
   const {
@@ -107,7 +79,7 @@ export default function Food() {
   return (
     <FoodStyle>
       <Header title="Foods" enableSearchButton />
-      <ListStyle>
+      <div>
         <div>
           { categoryFood.map((category, index) => (
             <button
@@ -139,7 +111,7 @@ export default function Food() {
             ))
           }
         </section>
-      </ListStyle>
+      </div>
       <MenuBar />
     </FoodStyle>
   );

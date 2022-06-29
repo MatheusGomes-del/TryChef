@@ -1,25 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// import { setFavoriteRecipes } from '../../services/localStorage';
-
-const CardS = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
-  width: 200px;
-  height: 150px;
-  img{
-    width: 100%;
-  }
-`;
+import FoodCardStyled from './styled';
 
 export default function FoodCard(props) {
   const { food, idTest, test } = props;
   return (
-    <CardS data-testid={ `${idTest}-recipe-card` }>
+    <FoodCardStyled data-testid={ `${idTest}-recipe-card` }>
       <Link to={ `/foods/${food.idMeal}` }>
         <img
           src={ food.strMealThumb }
@@ -28,7 +15,7 @@ export default function FoodCard(props) {
         />
         <h3 data-testid={ `${idTest}-${test}` }>{ food.strMeal }</h3>
       </Link>
-    </CardS>
+    </FoodCardStyled>
   );
 }
 
