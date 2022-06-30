@@ -1,24 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import MenuBar from '../components/MenuBar';
-import AppContext from '../../context/AppContext';
-import FoodCard from '../components/FoodCard';
+import Header from '../../components/Header';
+import MenuBar from '../../components/MenuBar';
+import AppContext from '../../../context/AppContext';
+import FoodCard from '../../components/FoodCard';
 // import { useHistory } from 'react-router-dom';
-
-const NationalS = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-evenly;
-div{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-top: 80px;
-}
-`;
+import ExploreNation from './styled';
 
 export default function ExploreNationalities() {
   const [igredients, setIgredients] = useState([]);
@@ -59,7 +45,7 @@ export default function ExploreNationalities() {
   };
 
   return (
-    <NationalS>
+    <ExploreNation>
       <Header title="Explore Nationalities" enableSearchButton />
       <select
         data-testid="explore-by-nationality-dropdown"
@@ -75,7 +61,7 @@ export default function ExploreNationalities() {
           </option>
         )) }
       </select>
-      <div>
+      <section id="recipe">
         {list?.map((recipe, index) => (
           <FoodCard
             key={ recipe.idMeal }
@@ -84,8 +70,8 @@ export default function ExploreNationalities() {
             test="card-name"
           />
         )).slice(0, Number(magicNumber))}
-      </div>
+      </section>
       <MenuBar />
-    </NationalS>
+    </ExploreNation>
   );
 }

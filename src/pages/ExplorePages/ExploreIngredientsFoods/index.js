@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import AppContext from '../../context/AppContext';
-import Header from '../components/Header';
-import MenuBar from '../components/MenuBar';
+import AppContext from '../../../context/AppContext';
+import Header from '../../components/Header';
+import MenuBar from '../../components/MenuBar';
+import ExploreIngredientS from './styled';
 
 export default function ExploreIngredientsFoods() {
   const [igredients, setIgredients] = useState([]);
@@ -31,24 +32,26 @@ export default function ExploreIngredientsFoods() {
   }
 
   return (
-    <>
+    <ExploreIngredientS>
       <Header title="Explore Ingredients" />
-      { igredients.map((igredient, index) => (
-        <button
-          key={ index }
-          type="button"
-          data-testid={ `${index}-ingredient-card` }
-          onClick={ () => toGoFoods(igredient.strIngredient) }
-        >
-          <img
-            data-testid={ `${index}-card-img` }
-            src={ `https://www.themealdb.com/images/ingredients/${igredient.strIngredient}-Small.png` }
-            alt="igredient"
-          />
-          <p data-testid={ `${index}-card-name` }>{ igredient.strIngredient }</p>
-        </button>
-      )).slice(0, Number(magicNumber)) }
+      <section>
+        { igredients.map((igredient, index) => (
+          <button
+            key={ index }
+            type="button"
+            data-testid={ `${index}-ingredient-card` }
+            onClick={ () => toGoFoods(igredient.strIngredient) }
+          >
+            <img
+              data-testid={ `${index}-card-img` }
+              src={ `https://www.themealdb.com/images/ingredients/${igredient.strIngredient}-Small.png` }
+              alt="igredient"
+            />
+            <p data-testid={ `${index}-card-name` }>{ igredient.strIngredient }</p>
+          </button>
+        )).slice(0, Number(magicNumber)) }
+      </section>
       <MenuBar />
-    </>
+    </ExploreIngredientS>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Header from './components/Header';
-import { getFavoriteRecipes } from '../services/localStorage';
-
-import FavoritesCard from './components/FavoritesCard';
+import Header from '../components/Header';
+import { getFavoriteRecipes } from '../../services/localStorage';
+import FavoritesCard from '../components/FavoritesCard';
+import FavoriteStyled from './styled';
 
 export default function FavoriteRecipes() {
   const [favoriteList, setFavoriteRecipes] = useState([]);
@@ -32,31 +32,33 @@ export default function FavoriteRecipes() {
   };
 
   return (
-    <>
+    <FavoriteStyled>
       <Header title="Favorite Recipes" />
-      <button
-        type="button"
-        data-testid="filter-by-all-btn"
-        onClick={ returnFavorites }
-      >
-        all
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-food-btn"
-        onClick={ filterFoods }
+      <div id="filter">
+        <button
+          type="button"
+          data-testid="filter-by-all-btn"
+          onClick={ returnFavorites }
+        >
+          all
+        </button>
+        <button
+          type="button"
+          data-testid="filter-by-food-btn"
+          onClick={ filterFoods }
 
-      >
-        food
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-drink-btn"
-        onClick={ filterDrinks }
-      >
-        drink
-      </button>
-      <div>
+        >
+          food
+        </button>
+        <button
+          type="button"
+          data-testid="filter-by-drink-btn"
+          onClick={ filterDrinks }
+        >
+          drink
+        </button>
+      </div>
+      <section id="favorite">
         {favoriteList.map((recipe, index) => (
           <FavoritesCard
             key={ index }
@@ -65,7 +67,7 @@ export default function FavoriteRecipes() {
             setList={ setFavoriteRecipes }
           />
         ))}
-      </div>
-    </>
+      </section>
+    </FavoriteStyled>
   );
 }

@@ -14,6 +14,8 @@ const HeaderStyle = styled.header`
     justify-content: center;
     /* border-radius: 50%;
     background-color: #fff; */
+    filter: invert(95%) sepia(0%) saturate(7438%) 
+    hue-rotate(197deg) brightness(110%) contrast(102%);
   }
   h1{
     grid-area: title;
