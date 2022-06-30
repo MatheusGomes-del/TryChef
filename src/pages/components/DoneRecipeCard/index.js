@@ -27,7 +27,7 @@ export default function DoneRecipeCard(props) {
       <Link id="nameRecipe" to={ `/${link}/${id}` }>
         <h3 data-testid={ `${index}-horizontal-name` }>{ name }</h3>
       </Link>
-      <ShareButton id={ id } type={ type } />
+      <ShareButton id={ id } type={ link } index={ index } done />
       <p id="data" data-testid={ `${index}-horizontal-done-date` }>
         { doneDate }
       </p>
