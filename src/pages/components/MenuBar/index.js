@@ -1,18 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import drinkIcon from '../../images/drinkIcon.svg';
-import mealIcon from '../../images/mealIcon.svg';
-import exploreIcon from '../../images/exploreIcon.svg';
-
-const FooterS = styled.footer`
-  position: fixed;
-  bottom: 0;
-`;
+import drinkIcon from '../../../images/drinkIcon.svg';
+import mealIcon from '../../../images/mealIcon.svg';
+import exploreIcon from '../../../images/exploreIcon.svg';
+import FooterStyled from './style';
 
 export default function MenuBar() {
   return (
-    <FooterS data-testid="footer">
+    <FooterStyled data-testid="footer">
 
       <Link to="/drinks">
         <img src={ drinkIcon } alt="drinkIcon" data-testid="drinks-bottom-btn" />
@@ -26,6 +21,6 @@ export default function MenuBar() {
         <img src={ mealIcon } alt="mealIcon" data-testid="food-bottom-btn" />
       </Link>
 
-    </FooterS>
+    </FooterStyled>
   );
 }
