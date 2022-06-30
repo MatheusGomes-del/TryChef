@@ -6,18 +6,21 @@ const ButtonFinish = styled.div`
   align-items: center;
   justify-content: center;
   button{
-    position: fixed;
-    bottom: 0;
-    background-color: green;
-    width: 180px;
-    height: 50px;
-    margin-bottom: 10px;
-    color: white;
-    font-size: 20px;
-
     :disabled{
       opacity: 30%;
     }
+    transition: .6s;
+    position: fixed;
+    bottom: 0;
+    background-color: black;
+    border-radius: 6px;
+    border: none;
+    color: #FAC267;
+    width: 180px;
+    height: 50px;
+    margin-bottom: 10px;
+    font-size: 20px;
+
   }
 `;
 

@@ -6,7 +6,6 @@ grid: "header" 10vh
       "categories" 10vh
       "done" 80vh
       / 1fr;
-background-color: #0fa36b;
 
 header{
   grid-area: header;
@@ -29,6 +28,8 @@ header{
       text-transform: uppercase;
       font-weight: bold;
       border-radius: 6px;
+      background-color: black;
+      color: #FAC267;
       border: none;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }

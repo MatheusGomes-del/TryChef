@@ -7,8 +7,11 @@ grid: "header" 10vh
       "footer" 10vh
       / 1fr;
 
+background-color: #EFEFEE;
+
 header{
   grid-area: header;
+  font-size: 80%;
 }
 
 section{

@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { getFavoriteRecipes, setFavoriteRecipes } from '../../../services/localStorage';
 import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../../images/blackHeartIcon.svg';
+
+const FilterButton = styled.button`
+filter: invert(17%) 
+sepia(81%) saturate(7441%) hue-rotate(358deg) brightness(110%) contrast(118%);
+`;
 
 export default function FavoriteButton(props) {
   const { id, foodInfo, drinkInfo, type } = props;
@@ -50,7 +56,7 @@ export default function FavoriteButton(props) {
   };
 
   return (
-    <button
+    <FilterButton
       type="button"
       onClick={ favoriteButton }
     >
@@ -59,12 +65,12 @@ export default function FavoriteButton(props) {
         alt="Favorite"
         data-testid="favorite-btn"
       />
-    </button>
+    </FilterButton>
   );
 }
 
 FavoriteButton.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   type: PropTypes.string.isRequired,
   foodInfo: PropTypes.objectOf(PropTypes.shape),
   drinkInfo: PropTypes.objectOf(PropTypes.shape),
@@ -73,4 +79,5 @@ FavoriteButton.propTypes = {
 FavoriteButton.defaultProps = {
   foodInfo: {},
   drinkInfo: {},
+  id: '0',
 };

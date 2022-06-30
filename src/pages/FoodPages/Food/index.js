@@ -85,7 +85,7 @@ export default function Food() {
             <button
               data-testid={ `${category.strCategory}-category-filter` }
               type="button"
-              key={ index }
+              key={ index + 1 }
               onClick={ () => filterFood(category.strCategory) }
             >
               { category.strCategory }

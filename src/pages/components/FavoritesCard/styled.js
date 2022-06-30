@@ -68,6 +68,8 @@ const FavoriteCard = styled.div`
     justify-content: center;
     background: none;
     border: none;
+    filter: invert(17%) 
+    sepia(81%) saturate(7441%) hue-rotate(358deg) brightness(110%) contrast(118%);
   }
 
 `;

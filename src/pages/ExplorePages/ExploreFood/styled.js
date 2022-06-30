@@ -6,6 +6,7 @@ grid: "header" 10vh
       "content" 80vh
       "footer" 10vh
       / 1fr;
+background-color: #EFEFEE;
 
 header{
   grid-area: header;
@@ -24,7 +25,8 @@ section{
     border: none;
     font-size: 1.5rem;
     width: 300px;
-    background: #FFFFFF;
+    background: black;
+    color: #FAC267;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
   }

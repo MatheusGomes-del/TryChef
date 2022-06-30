@@ -11,6 +11,7 @@ import FoodInProgressStyled from './styled';
 const ListaS = styled.span`
  text-decoration: ${({ teste }) => (teste ? 'line-through' : 'none')};
  font-size: 1.1rem;
+ color: ${({ teste }) => (teste ? 'green' : 'black')};
 `;
 
 const inProgressList = getInProgressRecipes() || [];
@@ -40,9 +41,9 @@ export default function FoodInProgress() {
 
       const inProgress = getInProgressRecipes();
 
-      const inProgressRecipe = inProgress?.meals[id];
+      const inProgressRecipe = inProgress?.meals[id] || 0;
 
-      if (inProgressRecipe !== undefined) {
+      if (inProgressRecipe !== 0) {
         setIngred(inProgressRecipe);
       } else {
         setIngred(ingredientsList);
@@ -78,6 +79,7 @@ export default function FoodInProgress() {
           id={ `ingrediente${index}` }
           type="checkbox"
           checked={ ingrediente.done }
+          defaultChecked={ ingrediente.done }
           onChange={ () => checkButton(index) }
         />
         {' '}

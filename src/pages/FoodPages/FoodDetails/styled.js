@@ -71,7 +71,8 @@ div {
     padding: 15px;
     list-style: none;
     width: 341px;
-    background: #ECECEC;
+    color: black;
+    background-color: white;
     border-radius: 4px;
     li{
       padding: 5px;
@@ -102,7 +103,8 @@ div {
     padding: 15px;
     list-style: none;
     width: 341px;
-    background: #ECECEC;
+    color: black;
+    background-color: white;
     border-radius: 4px;
     font-family: 'Roboto';
     font-style: normal;

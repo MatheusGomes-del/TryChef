@@ -7,9 +7,11 @@ grid: "header" 10vh
       "content" 70vh
       "footer" 10vh
       / 1fr;
+background-color: #EFEFEE;
 
 header{
   grid-area: header;
+  font-size: 80%;
 }
 
 select{
@@ -19,9 +21,12 @@ select{
   margin: 15px auto;
   border: 1px solid #e6e6e6;
   border-radius: 5px;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: bold;
   text-align: center;
+  background-color: black;
+  color: #FAC267;
+
 }
 
 #recipe{

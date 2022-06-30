@@ -13,7 +13,7 @@ background-color: #545454;
 background-color: #666665; */
 /* background-image: url(${burek});
 background-size: cover; */
-background: rgba(226,226,226,1);
+background: #efefee;
 
 
 header{
@@ -38,13 +38,17 @@ div{
     button {
       padding: 0.5rem;
       margin: 0.5rem 0;
-      background-color: #EDD998;
+      background-color: black;
+      color: #FAC267;
       width: 30%;
       text-transform: uppercase;
       font-weight: bold;
       border-radius: 6px;
       border: none;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      /* :hover{
+        background-color: black;
+      } */
     }
   }
   section{

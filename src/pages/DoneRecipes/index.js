@@ -10,7 +10,6 @@ export default function DoneRecipes() {
     function getRecipesDone() {
       const recipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
       setRecipesDone(recipes);
-      console.log(recipes);
     }
     getRecipesDone();
   }, []);

@@ -29,8 +29,8 @@ export default function Login() {
   return (
     <LoginStyled>
       <div>
-        <span>Try-Chef</span>
-        <p>Food-if edition</p>
+        <span>TryChef</span>
+        <p>Gourmet edition</p>
         {/* <object
           className="rocksGlass"
           type="image/svg+xml"

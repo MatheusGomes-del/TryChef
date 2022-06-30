@@ -12,7 +12,6 @@ export default function Profile() {
     function getEmailFromLocalStorage() {
       const email = JSON.parse(localStorage.getItem('user'));
       setEmail(email);
-      console.log(email);
     }
 
     getEmailFromLocalStorage();

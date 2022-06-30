@@ -74,10 +74,15 @@ section{
     padding: 15px;
     list-style: none;
     width: 341px;
-    background: #ECECEC;
+    background: white;
     border-radius: 4px;
     li{
       padding: 15px;
+
+      input[type='checkbox']{
+        margin-right: 10px;
+        accent-color: #E27221;
+      }
     }
   }
 }
@@ -105,7 +110,7 @@ section{
     padding: 15px;
     list-style: none;
     width: 341px;
-    background: #ECECEC;
+    background: white;
     border-radius: 4px;
     font-family: 'Roboto';
     font-style: normal;

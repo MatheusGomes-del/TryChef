@@ -27,7 +27,8 @@ section{
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #c4c4c4;
+    background-color: black;
+    color: #FAC267;
     font-size: 1.5rem;
     width: 300px;
   }

@@ -5,18 +5,15 @@ import CardS from './styled';
 
 export default function DrinkCard(props) {
   const { drink, idTest, test } = props;
-  const image = drink.strDrinkThumb || drink.image;
-  const id = drink.idDrink || drink.id;
-  const name = drink.strDrink || drink.name;
   return (
     <CardS data-testid={ `${idTest}-recipe-card` }>
-      <Link to={ `/drinks/${id}` }>
+      <Link to={ `/drinks/${drink?.idDrink}` }>
         <img
-          src={ image }
-          alt={ name }
+          src={ drink?.strDrinkThumb }
+          alt={ drink?.strDrink }
           data-testid={ `${idTest}-card-img` }
         />
-        <h3 data-testid={ `${idTest}-${test}` }>{ name }</h3>
+        <h3 data-testid={ `${idTest}-${test}` }>{ drink?.strDrink }</h3>
       </Link>
     </CardS>
   );
@@ -27,9 +24,6 @@ DrinkCard.propTypes = {
     strDrink: PropTypes.string.isRequired,
     strDrinkThumb: PropTypes.string.isRequired,
     idDrink: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
   }).isRequired,
   idTest: PropTypes.number.isRequired,
   test: PropTypes.string.isRequired,

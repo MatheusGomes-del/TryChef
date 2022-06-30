@@ -12,18 +12,18 @@ export default function StartButton({ id, type }) {
   const history = useHistory();
 
   useEffect(() => {
-    if (inProgressRecipesList.meals) {
-      const inProgressMeals = Object.keys(inProgressRecipesList.meals);
+    if (inProgressRecipesList?.meals) {
+      const inProgressMeals = Object.keys(inProgressRecipesList?.meals);
       return setContinue(inProgressMeals.some((recipe) => recipe === id) || false);
     }
 
-    if (inProgressRecipesList.cocktails) {
-      const inProgressMeals = Object.keys(inProgressRecipesList.cocktails);
+    if (inProgressRecipesList?.cocktails) {
+      const inProgressMeals = Object.keys(inProgressRecipesList?.cocktails);
       return setContinue(inProgressMeals.some((recipe) => recipe === id) || false);
     }
 
     const doneRecipesList = getDoneRecipes() || [];
-    const done = doneRecipesList.some((recipe) => recipe.id === id);
+    const done = doneRecipesList.some((recipe) => recipe?.id === id);
     setDoneRecipe(done);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
@@ -47,3 +47,7 @@ StartButton.propTypes = {
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };
+
+// StartButton.defaultProps = {
+//   id: '0',
+// };

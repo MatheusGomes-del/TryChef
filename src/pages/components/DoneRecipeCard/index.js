@@ -43,6 +43,6 @@ export default function DoneRecipeCard(props) {
 }
 
 DoneRecipeCard.propTypes = {
-  recipe: PropTypes.objectOf(PropTypes.shape.isRequired).isRequired,
+  recipe: PropTypes.objectOf(PropTypes.shape).isRequired,
   index: PropTypes.number.isRequired,
 };

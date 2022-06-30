@@ -4,10 +4,10 @@ import DrinkDetailsStyled from './styled';
 import FavoriteButton from '../../components/FavoriteButton';
 import ShareButton from '../../components/ShareButton';
 import StartButton from '../../components/StartButton';
-import FoodsRecommends from './FoodsRecommends.js';
+import FoodsRecommends from './FoodsRecommends';
 
 export default function DrinkDetails() {
-  const { id } = useParams();
+  const { id } = useParams() || 0;
   const [drinkInfo, setDrinkInfo] = useState({});
   const [ingredients, setIngredients] = useState([]);
   const [quantities, setQuantities] = useState([]);
@@ -18,7 +18,6 @@ export default function DrinkDetails() {
       const result = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
       const { drinks } = await result.json();
       setDrinkInfo(drinks[0]);
-      console.log(drinks[0]);
 
       const ingredientsList = Object.entries(drinks[0])
         .filter((info) => (info[0].includes('strIngredient') && info[1]))

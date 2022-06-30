@@ -18,7 +18,6 @@ export default function FoodDetails() {
       const result = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
       const { meals } = await result.json();
       setFoodInfo(meals[0]);
-      console.log(meals[0]);
 
       const ingredientsList = Object.entries(meals[0])
         .filter((info) => (info[0].includes('strIngredient') && info[1]))
@@ -109,7 +108,7 @@ export default function FoodDetails() {
       <DrinksRecommends drinksList={ drinksList } />
 
       <StartButton
-        id={ foodInfo.idMeal }
+        id={ foodInfo?.idMeal }
         type="foods"
       />
     </>
