@@ -12,7 +12,7 @@ import Explore from './pages/ExplorePages/Explore';
 import ExploreFood from './pages/ExplorePages/ExploreFood';
 import ExploreDrinks from './pages/ExplorePages/ExploreDrinks';
 import ExploreIngredientsFoods from './pages/ExplorePages/ExploreIngredientsFoods';
-import ExploreIngredientsDrinks from './pages/ExplorePages/ExploreIgredientsDrinks';
+import ExploreIngredientsDrinks from './pages/ExplorePages/ExploreIngredientsDrinks';
 import ExploreNationalities from './pages/ExplorePages/ExploreNationalities';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
@@ -25,6 +25,11 @@ const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
+  /* font-family: -apple-system, -apple-system; */
+  /* color: #36100C */
+}
+body{
+  background-color: #efefee;
 }
 `;
 
