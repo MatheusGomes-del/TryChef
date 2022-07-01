@@ -11,7 +11,7 @@ import DrinkInProgressStyled from './styled';
 const ListaS = styled.span`
  text-decoration: ${({ teste }) => (teste ? 'line-through' : 'none')};
  font-size: 1.1rem;
- color: ${({ teste }) => (teste ? 'line-through' : 'none')};
+ color: ${({ teste }) => (teste ? 'green' : 'black')};
 `;
 
 const inProgressList = getInProgressRecipes() || [];
@@ -40,7 +40,7 @@ export default function DrinkInProgress() {
 
       const inProgress = getInProgressRecipes();
 
-      const inProgressRecipe = inProgress?.cocktails[id] || 0;
+      const inProgressRecipe = inProgress?.cocktails?.[id] || 0;
 
       if (inProgressRecipe !== 0) {
         setIngredients(inProgressRecipe);

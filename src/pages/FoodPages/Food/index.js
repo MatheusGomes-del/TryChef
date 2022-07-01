@@ -23,7 +23,9 @@ export default function Food() {
         return error;
       }
     }
-    getFoods();
+    if (igredient === '') {
+      getFoods();
+    }
     getCategorysFood();
 
     if (igredient !== '') {
