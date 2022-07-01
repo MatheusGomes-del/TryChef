@@ -5,6 +5,8 @@ const DrinkDetailsStyled = styled.div`
  display: flex;
   flex-direction: column;
   align-items: center;
+
+background-color:#EFEFEE;
 img {
   width: 100vw;
   height: 155px;
@@ -71,7 +73,8 @@ div {
     padding: 15px;
     list-style: none;
     width: 341px;
-    background: #ECECEC;
+    color: black;
+    background-color: white;
     border-radius: 4px;
     li{
       padding: 5px;
@@ -102,7 +105,8 @@ div {
     padding: 15px;
     list-style: none;
     width: 341px;
-    background: #ECECEC;
+    color: black;
+    background-color: white;
     border-radius: 4px;
     font-family: 'Roboto';
     font-style: normal;

@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import MenuBar from '../components/MenuBar';
+import Header from '../../components/Header';
+import MenuBar from '../../components/MenuBar';
+import ExploreMain from './styled';
 
 export default function Explore() {
   return (
-    <>
+    <ExploreMain>
       <Header title="Explore" />
-      <div>
+      <section>
         <Link to="/explore/foods">
           <button
             type="button"
@@ -16,8 +17,6 @@ export default function Explore() {
             Explore Foods
           </button>
         </Link>
-      </div>
-      <div>
         <Link to="/explore/drinks">
           <button
             type="button"
@@ -26,9 +25,8 @@ export default function Explore() {
             Explore Drinks
           </button>
         </Link>
-
-      </div>
+      </section>
       <MenuBar />
-    </>
+    </ExploreMain>
   );
 }

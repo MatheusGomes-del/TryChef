@@ -8,9 +8,11 @@ import FoodCard from '../../components/FoodCard';
 
 const SliderStyle = styled.div`
 margin: 9px;
+background-color: #efefee;
 
 .slick-slider {
   margin-bottom: 80px;
+  background-color: #efefee;
 }
 `;
 
@@ -44,5 +46,5 @@ export default function FoodsRecommends(props) {
 }
 
 FoodsRecommends.propTypes = {
-  foodsList: Proptypes.arrayOf(Proptypes.shape.isRequired).isRequired,
+  foodsList: Proptypes.arrayOf(Proptypes.objectOf).isRequired,
 };

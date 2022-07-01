@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const DoneStyled = styled.div`
+const FavoriteStyled = styled.div`
 display: grid;
 grid: "header" 10vh
       "categories" 10vh
-      "done" 80vh
+      "favorite" 80vh
       / 1fr;
 
 header{
@@ -27,16 +27,16 @@ header{
       width: 30%;
       text-transform: uppercase;
       font-weight: bold;
-      border-radius: 6px;
       background-color: black;
       color: #FAC267;
+      border-radius: 6px;
       border: none;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 }
 
-#done{
-  grid-area: done;
+#favorite{
+  grid-area: favorite;
   overflow: auto;
   display: flex;
   flex-wrap: wrap;
@@ -44,4 +44,4 @@ header{
 }
 `;
 
-export default DoneStyled;
+export default FavoriteStyled;

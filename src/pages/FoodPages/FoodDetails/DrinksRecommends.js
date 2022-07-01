@@ -44,5 +44,5 @@ export default function DrinksRecommends(props) {
 }
 
 DrinksRecommends.propTypes = {
-  drinksList: Proptypes.arrayOf(Proptypes.shape.isRequired).isRequired,
+  drinksList: Proptypes.arrayOf(Proptypes.objectOf).isRequired,
 };

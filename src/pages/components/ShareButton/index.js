@@ -29,7 +29,7 @@ export default function ShareButton({ id, type, index, done }) {
 
 ShareButton.propTypes = {
   type: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   index: PropTypes.number,
   done: PropTypes.bool,
 };
@@ -37,4 +37,5 @@ ShareButton.propTypes = {
 ShareButton.defaultProps = {
   index: 0,
   done: false,
+  id: '0',
 };

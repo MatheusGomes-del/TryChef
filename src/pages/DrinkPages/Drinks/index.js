@@ -13,8 +13,6 @@ export default function Drinks() {
   const [magigNumber] = useState('5');
   const [toggle, setToggle] = useState(false);
 
-  console.log(igredient);
-
   useEffect(() => {
     async function getCategorysDrink() {
       try {
@@ -36,7 +34,6 @@ export default function Drinks() {
           const response = await fetch(endpoint);
           const data = await response.json();
           let newList = data.drinks;
-          console.log(data.drinks);
           const eleven = 11;
           if (data.drinks.length > eleven) {
             const twelve = 12;
@@ -88,7 +85,7 @@ export default function Drinks() {
             <button
               data-testid={ `${category.strCategory}-category-filter` }
               type="button"
-              key={ index }
+              key={ index + 1 }
               onClick={ () => filterDrink(category.strCategory) }
             >
               { category.strCategory }

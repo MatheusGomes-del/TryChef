@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import Header from '../components/Header';
-import MenuBar from '../components/MenuBar';
+import Header from '../../components/Header';
+import MenuBar from '../../components/MenuBar';
+import ExploreDrinkS from './styled';
 
 export default function ExploreDrinks() {
   const history = useHistory();
@@ -19,9 +20,9 @@ export default function ExploreDrinks() {
   };
 
   return (
-    <>
+    <ExploreDrinkS>
       <Header title="Explore Drinks" />
-      <div>
+      <section>
         <Link to="/explore/drinks/ingredients">
           <button
             type="button"
@@ -30,8 +31,6 @@ export default function ExploreDrinks() {
             By Ingredient
           </button>
         </Link>
-      </div>
-      <div>
         <button
           type="button"
           data-testid="explore-surprise"
@@ -39,8 +38,8 @@ export default function ExploreDrinks() {
         >
           Surprise me!
         </button>
-      </div>
+      </section>
       <MenuBar />
-    </>
+    </ExploreDrinkS>
   );
 }

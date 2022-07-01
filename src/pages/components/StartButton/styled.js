@@ -8,11 +8,13 @@ const ButtonStart = styled.div`
   button{
     position: fixed;
     bottom: 0;
-    background-color: green;
+    background-color: black;
+    border-radius: 6px;
+    border: none;
+    color: #FAC267;
     width: 180px;
     height: 50px;
     margin-bottom: 10px;
-    color: white;
     font-size: 20px;
   }
 `;

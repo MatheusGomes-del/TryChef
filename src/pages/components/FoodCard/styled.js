@@ -27,6 +27,7 @@ const FoodCardStyled = styled.div`
       grid-area: nome;
       color: #000;
       text-align: center;
+      font-size: 90%;
     }
   }
 

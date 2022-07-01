@@ -7,13 +7,13 @@ export default function FoodCard(props) {
   const { food, idTest, test } = props;
   return (
     <FoodCardStyled data-testid={ `${idTest}-recipe-card` }>
-      <Link to={ `/foods/${food.idMeal}` }>
+      <Link to={ `/foods/${food?.idMeal}` }>
         <img
-          src={ food.strMealThumb }
-          alt={ food.strMeal }
+          src={ food?.strMealThumb }
+          alt={ food?.strMeal }
           data-testid={ `${idTest}-card-img` }
         />
-        <h3 data-testid={ `${idTest}-${test}` }>{ food.strMeal }</h3>
+        <h3 data-testid={ `${idTest}-${test}` }>{ food?.strMeal }</h3>
       </Link>
     </FoodCardStyled>
   );

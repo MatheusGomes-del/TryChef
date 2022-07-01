@@ -6,7 +6,7 @@ display: grid;
         "mainS" 80vh
         "menubar" 10vh
         / 1fr;
-background-color: #0fa36b;
+background-color: #EFEFEE;
 
 header{
   grid-area: header;
@@ -32,9 +32,12 @@ div{
       width: 30%;
       height: 40px;
       text-transform: uppercase;
+      font-size: 68%;
       font-weight: bold;
       border-radius: 6px;
       border: none;
+      color: #FAC267;
+      background-color: black;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
   }
