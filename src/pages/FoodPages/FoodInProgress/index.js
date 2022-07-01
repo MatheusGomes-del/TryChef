@@ -41,7 +41,7 @@ export default function FoodInProgress() {
 
       const inProgress = getInProgressRecipes();
 
-      const inProgressRecipe = inProgress?.meals[id] || 0;
+      const inProgressRecipe = inProgress?.meals?.[id] || 0;
 
       if (inProgressRecipe !== 0) {
         setIngred(inProgressRecipe);
