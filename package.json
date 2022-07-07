@@ -26,6 +26,7 @@
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.5",
+    "surge": "^0.23.1",
     "websocket-extensions": ">=0.1.4"
   },
   "scripts": {
